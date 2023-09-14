@@ -1,4 +1,4 @@
-proc GenerateStaircase(float $supportRadius, float $stairLength, float $stairHeight, float $stairWidth, float $pivot, int $stairNum, float $stairSpace)
+proc GenerateStaircase(float $supportRadius, float $stairLength, float $stairHeight, float $stairWidth, float $pivot, int $stairNum, float $stairSpace, float $angle, int $createSupport)
 {
     float $staircaseHeight = $stairHeight;
     //create first stair
@@ -12,15 +12,19 @@ proc GenerateStaircase(float $supportRadius, float $stairLength, float $stairHei
     for($i = 0; $i <= $stairNum; $i++)
     {
         //create the rest of the stairs
+        string $selectedObjects[] = `ls -sl`;
         string $copiedObjects[] = `duplicate -rr $selectedObjects`;
-        rotate -r - os - fo 0 (360/$stairNum) 0;
-        move -r 0 $stairSpace 0 ;
-        $staircaseHeight += $stairSpace;
+        rotate -r - os - fo 0 ($angle) 0;
+        move -r 0 ($stairSpace + $stairHeight) 0 ;
+        $staircaseHeight += $stairSpace + $stairHeight;
         $selectedObjects = `ls -sl`;
     }
      //create support
+    if($createSupport == 1)
+    {
     polyCylinder -r $supportRadius -h $staircaseHeight -sx 20 -sy 1 -sz 1 -ax 0 1 0 -rcp 0 -cuv 3 -ch 1;
     move -r 0 ($staircaseHeight/2) 0 ;
+    }
 }
 
-GenerateStaircase(.5, 6, .25, 2, 3, 20, 1);
+GenerateStaircase(.5, 6, .25, 2, 5, 20, 0, 20, 0);
