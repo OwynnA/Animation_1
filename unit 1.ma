@@ -1,6 +1,6 @@
 //Maya ASCII 2023 scene
 //Name: unit 1.ma
-//Last modified: Thu, Sep 14, 2023 11:54:10 PM
+//Last modified: Fri, Sep 15, 2023 10:33:59 PM
 //Codeset: UTF-8
 requires maya "2023";
 requires -nodeType "ShaderfxGameHair" "shaderFXPlugin" "1.0";
@@ -15,7 +15,7 @@ fileInfo "product" "Maya 2023";
 fileInfo "version" "2023";
 fileInfo "cutIdentifier" "202205052215-234554116d";
 fileInfo "osv" "Mac OS X 10.16";
-fileInfo "UUID" "913DD4C2-7D46-A9F1-FCC0-99834A2822D8";
+fileInfo "UUID" "5F5BD415-9549-95D6-7D86-36AECB0D2B89";
 createNode transform -s -n "persp";
 	rename -uid "18969A83-B948-C035-B9D1-E090B6DC0D24";
 	setAttr ".v" no;
@@ -4206,8 +4206,7 @@ createNode aiAOVFilter -s -n "defaultArnoldFilter";
 	setAttr ".ai_translator" -type "string" "gaussian";
 createNode aiAOVDriver -s -n "defaultArnoldDriver";
 	rename -uid "872F8950-9A4A-BC44-2F37-B39300A7AFF3";
-	setAttr ".color_management" 1;
-	setAttr ".ai_translator" -type "string" "png";
+	setAttr ".ai_translator" -type "string" "exr";
 createNode aiAOVDriver -s -n "defaultArnoldDisplayDriver";
 	rename -uid "10B2A7E3-E848-728D-B1E2-718B5FEC1C4A";
 	setAttr ".output_mode" 0;
@@ -5165,11 +5164,9 @@ select -ne :defaultRenderGlobals;
 	addAttr -ci true -h true -sn "dss" -ln "defaultSurfaceShader" -dt "string";
 	setAttr ".ren" -type "string" "arnold";
 	setAttr ".outf" 51;
-	setAttr ".imfkey" -type "string" "png";
-	setAttr ".an" yes;
+	setAttr ".imfkey" -type "string" "exr";
 	setAttr ".ef" 50;
-	setAttr ".pff" yes;
-	setAttr ".ifp" -type "string" "pianoBall";
+	setAttr ".ifp" -type "string" "pianoBallTest";
 	setAttr ".pram" -type "string" "";
 	setAttr ".dss" -type "string" "lambert1";
 select -ne :defaultResolution;
